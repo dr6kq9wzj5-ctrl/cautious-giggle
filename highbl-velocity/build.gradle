@@ -1,0 +1,33 @@
+plugins {
+    id 'java'
+    id 'com.gradleup.shadow' version '8.3.0'
+}
+
+group   = 'com.highbl'
+version = '1.0.0'
+
+java {
+    sourceCompatibility = JavaVersion.VERSION_17  // Velocity 3.x requires Java 17
+    targetCompatibility = JavaVersion.VERSION_17
+}
+
+repositories {
+    mavenCentral()
+    maven { url 'https://repo.papermc.io/repository/maven-public/' }
+}
+
+dependencies {
+    // Velocity API — annotation processor generates velocity-plugin.json from @Plugin
+    compileOnly         'com.velocitypowered:velocity-api:3.3.0-SNAPSHOT'
+    annotationProcessor 'com.velocitypowered:velocity-api:3.3.0-SNAPSHOT'
+
+    // Gson (bundled in Velocity, but listed explicitly so the IDE is happy)
+    compileOnly 'com.google.code.gson:gson:2.10.1'
+}
+
+shadowJar {
+    // Nothing to shade — all deps are compileOnly / provided by Velocity
+    archiveClassifier.set('')
+}
+
+build.dependsOn shadowJar

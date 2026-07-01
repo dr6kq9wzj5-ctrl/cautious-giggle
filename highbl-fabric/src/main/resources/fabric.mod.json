@@ -1,0 +1,19 @@
+{
+  "schemaVersion": 1,
+  "id": "highbl",
+  "version": "${version}",
+  "name": "HighBL",
+  "description": "Arena management mod – bridges Fabric game logic to Velocity proxy",
+  "authors": [ "HighBL" ],
+  "contact": {},
+  "license": "MIT",
+  "environment": "server",
+  "entrypoints": {
+    "main": [ "com.highbl.fabric.HighBLMod" ]
+  },
+  "depends": {
+    "fabricloader": ">=0.19.3",
+    "fabric-api":   "*",
+    "minecraft":    "~26.2"
+  }
+}
